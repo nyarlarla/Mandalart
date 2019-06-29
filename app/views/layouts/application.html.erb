@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mandalart</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+      <h2 class="text-white">Mandarart</h2>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+              <li class="nav-item nav-link"><%= link_to "ホーム", root_path %>
+              </li>
+              <li class="nav-item nav-link"><%= link_to "新しいシートの作成", root_path %>
+              </li>
+              <li class="nav-item nav-link"><%= link_to "他の人のシートを見る", root_path %>
+              </li>
+              <li class="nav-item nav-link"><%= link_to "ログアウト", root_path %>
+              </li>
+            <% else %>
+              <li class="nav-item nav-link"><%= link_to "ホーム", root_path %>
+              </li>
+              <li class="nav-item nav-link"><%= link_to 'アバウト', root_path %>
+              </li>
+              <li class="nav-item nav-link">
+                  <%= link_to "サインイン", new_user_registration_path %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "ログイン", new_user_session_path %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    </nav>
+   </header>
+
+    <%= yield %>
+
+    <footer>
+      <div class="bg-dark text-right">
+        <h2 class="text-white container">フッターです</h2>
+      </div>
+    </footer>
+  </body>
+</html>
